@@ -7,7 +7,7 @@ import net.womp.WomPLUS;
 import net.womp.gameasset.animation.ANIMBuilder;
 import yesman.epicfight.api.animation.AnimationManager;
 
-@Mod.EventBusSubscriber(modid = WomPLUS.MODID,bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = WomPLUS.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModBusEvent {
 
     @SubscribeEvent

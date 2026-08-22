@@ -6,23 +6,18 @@ import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.womp.WomPLUS;
+import net.womp.client.particle.WomPlusParticles;
 import net.womp.gameasset.animation.WOMPAnimations;
 import net.womp.gameasset.animation.WOMPCollider;
 import net.womp.skill.WOMPSkills;
-import reascer.wom.animation.attacks.BasicMultipleAttackAnimation;
 import reascer.wom.gameasset.WOMSkills;
-import reascer.wom.gameasset.animations.weapons.AnimsNova;
-import reascer.wom.gameasset.colliders.WOMWeaponColliders;
-import reascer.wom.particle.WOMParticles;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.Animations;
 import yesman.epicfight.gameasset.ColliderPreset;
 import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.gameasset.EpicFightSounds;
-import yesman.epicfight.main.EpicFightMod;
 import yesman.epicfight.particle.EpicFightParticles;
-import yesman.epicfight.particle.HitParticleType;
 import yesman.epicfight.world.capabilities.EpicFightCapabilities;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
 import yesman.epicfight.world.capabilities.item.WeaponCapability;
@@ -32,24 +27,13 @@ import java.util.function.Function;
 @Mod.EventBusSubscriber(modid = WomPLUS.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class WOMPCapabilites {
 
-    public static HitParticleType randomSlashHitParticleTYPE(){
-        int randomInt = (int)(Math.random() * (double)4.0F);
-        HitParticleType RandomHitParticle;
-        switch (randomInt) {
-            case 0 -> RandomHitParticle = WOMParticles.SHARPCUT_SLASH.get();
-            case 1 -> RandomHitParticle = WOMParticles.SHARPCUT_LEFT_SLASH.get();
-            case 2 -> RandomHitParticle = WOMParticles.SHARPCUT_RIGHT_SLASH.get();
-            case 3 -> RandomHitParticle = WOMParticles.SHARPCUT_ANGLED_UP_RIGHT_SLASH.get();
-            default -> RandomHitParticle = WOMParticles.SHARPCUT_ANGLED_DOWN_LEFT_SLASH.get();
-        }
-        return RandomHitParticle;
-    }
+
     public static final Function<Item, CapabilityItem.Builder> EVIL_TACHI_REIFT = (item) ->
             WeaponCapability.builder()
                     .category(WOMPWeaponCategories.EVIL_TACHI)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(WOMPCollider.EVIL_TACHI)
-                    .hitParticle(randomSlashHitParticleTYPE())
+                    .hitParticle(WomPlusParticles.randomSlashHitParticleTYPE.get())
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)
@@ -78,7 +62,7 @@ public class WOMPCapabilites {
                     .category(WOMPWeaponCategories.EVIL_TACHI)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
                     .collider(WOMPCollider.EVIL_TACHI)
-                    .hitParticle(randomSlashHitParticleTYPE())
+                    .hitParticle(WomPlusParticles.randomSlashHitParticleTYPE.get())
                     .swingSound(EpicFightSounds.WHOOSH.get())
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(false)
