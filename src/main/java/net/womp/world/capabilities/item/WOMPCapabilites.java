@@ -44,6 +44,35 @@ public class WOMPCapabilites {
         }
         return RandomHitParticle;
     }
+    public static final Function<Item, CapabilityItem.Builder> EVIL_TACHI_REIFT = (item) ->
+            WeaponCapability.builder()
+                    .category(WOMPWeaponCategories.EVIL_TACHI)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(WOMPCollider.EVIL_TACHI)
+                    .hitParticle(randomSlashHitParticleTYPE())
+                    .swingSound(EpicFightSounds.WHOOSH.get())
+                    .hitSound(EpicFightSounds.BLADE_HIT.get())
+                    .canBePlacedOffhand(false)
+                    .passiveSkill(WOMSkills.EVIL_TACHI_PASSIVE)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> WOMPSkills.EVIL_PUNISHMENT)
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            WOMPAnimations.EVIL_TACHI_NEW_AUTO1,
+                            WOMPAnimations.EVIL_TACHI_NEW_AUTO2,
+                            WOMPAnimations.EVIL_TACHI_NEW_AUTO3,
+                            WOMPAnimations.EVIL_ODACHI_AUTO4,
+                            WOMPAnimations.EVIL_ODACHI_AUTO5,
+                            WOMPAnimations.EVIL_TACHI_NEW_DASH,
+                            WOMPAnimations.EVIL_TACHI_NEW_AIRSLASH)
+
+
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, WOMPAnimations.EVIL_TACHI_NEW_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, WOMPAnimations.EVIL_ODACHI_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.SNEAK, WOMPAnimations.EVIL_ODACHI_SNEAK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.KNEEL, WOMPAnimations.EVIL_ODACHI_KNEEL)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, WOMPAnimations.EVIL_ODACHI_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, WOMPAnimations.EVIL_ODACHI_GUARD);
+
+
     public static final Function<Item, CapabilityItem.Builder> EVIL_TACHI = (item) ->
             WeaponCapability.builder()
                     .category(WOMPWeaponCategories.EVIL_TACHI)
@@ -62,7 +91,7 @@ public class WOMPCapabilites {
                             WOMPAnimations.EVIL_ODACHI_AUTO4,
                             WOMPAnimations.EVIL_ODACHI_AUTO5,
                             WOMPAnimations.EVIL_ODACHI_DASH,
-                            WOMPAnimations.EVIL_ODACHI_AIRSLASH)
+                            WOMPAnimations.EVIL_TACHI_NEW_AIRSLASH)
 
 
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, WOMPAnimations.EVIL_ODACHI_IDLE)
@@ -85,7 +114,7 @@ public class WOMPCapabilites {
                     .hitSound(EpicFightSounds.BLADE_HIT.get())
                     .canBePlacedOffhand(true)
                     .innateSkill(CapabilityItem.Styles.OCHS, ip -> WOMPSkills.ANNIHILATE)
-                    .innateSkill(CapabilityItem.Styles.ONE_HAND, ip -> WOMPSkills.COMET)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> WOMPSkills.COMET)
 
                     .newStyleCombo(CapabilityItem.Styles.OCHS,
                             WOMPAnimations.GREATAXE_DUAL_AUTO1,
@@ -166,6 +195,7 @@ public class WOMPCapabilites {
     @SubscribeEvent
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID, "greataxe"), GREATAXE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID, "evil_tachi_reift"), EVIL_TACHI_REIFT);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID, "hollow_longsword"), HOLLOW_LONGSWORD);
             event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID, "evil_tachi"), EVIL_TACHI);
     }

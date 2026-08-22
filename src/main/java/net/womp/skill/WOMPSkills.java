@@ -4,7 +4,8 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.womp.WomPLUS;
 import net.womp.gameasset.animation.WOMPAnimations;
-import net.womp.skill.weapon_innate.Evil_beam;
+import net.womp.skill.weapon_innate.EvilBeam;
+import net.womp.skill.weapon_innate.EvilPunishment;
 import net.womp.skill.weapon_innate.RAHHHHH;
 import yesman.epicfight.api.animation.property.AnimationProperty;
 import yesman.epicfight.api.forgeevent.SkillBuildEvent;
@@ -21,6 +22,7 @@ import java.util.Set;
 @Mod.EventBusSubscriber(modid = WomPLUS.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class WOMPSkills {
     public static Skill EVIL_BEAAAAMMMM;
+    public static Skill EVIL_PUNISHMENT;
     public static Skill COMET;
     public static Skill ANNIHILATE;
     public static Skill RAAAHHH;
@@ -30,7 +32,7 @@ public class WOMPSkills {
         SkillBuildEvent.ModRegistryWorker modRegistry = build.createRegistryWorker(WomPLUS.MODID);
 
 
-        WeaponInnateSkill evilbeam = modRegistry.build("evil_beam", Evil_beam::new, Evil_beam.createSimpleWeaponInnateBuilder()
+        WeaponInnateSkill evilbeam = modRegistry.build("evil_beam", EvilBeam::new, EvilBeam.createSimpleWeaponInnateBuilder()
                 .setAnimations(WOMPAnimations.EVIL_ODACHI_BEAAAMMMM)
                 .setCategory(SkillCategories.WEAPON_INNATE));
         evilbeam.newProperty()
@@ -43,6 +45,7 @@ public class WOMPSkills {
                         .create())).addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE));
 
         EVIL_BEAAAAMMMM = evilbeam;
+
 
         WeaponInnateSkill annihilate = modRegistry.build("annihilate", SimpleWeaponInnateSkill::new, SimpleWeaponInnateSkill.createSimpleWeaponInnateBuilder()
                 .setAnimations(WOMPAnimations.ANNIHILATE)
@@ -64,6 +67,10 @@ public class WOMPSkills {
 
         RAAAHHH = modRegistry.build("rahhh", RAHHHHH::new,
                 RAHHHHH.createWeaponInnateBuilder()
+                        .setCategory(SkillCategories.WEAPON_INNATE)
+        );
+        EVIL_PUNISHMENT = modRegistry.build("evil_punishment", EvilPunishment::new,
+                EvilPunishment.createWeaponInnateBuilder()
                         .setCategory(SkillCategories.WEAPON_INNATE)
         );
     }

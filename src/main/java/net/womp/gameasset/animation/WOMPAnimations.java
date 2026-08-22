@@ -75,6 +75,23 @@ public class WOMPAnimations {
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_ODACHI_OVERHEADSLASH_RELEASE;
 
 
+    public static AnimationManager.AnimationAccessor<StaticAnimation> EVIL_TACHI_NEW_IDLE;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_AUTO1;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_AUTO2;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_AUTO3;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_AUTO4;
+    public static AnimationManager.AnimationAccessor<AirSlashAnimation> EVIL_TACHI_NEW_AIRSLASH;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_DASH;
+
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_AUTO1_SKILL;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_AUTO2_SKILL;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_AUTO3_SKILL;
+
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_AIRSLASH_SKILL;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_AIRSLASH_SKILL2;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> EVIL_TACHI_NEW_DASH_SKILL;
+
+
     public static AnimationManager.AnimationAccessor<StaticAnimation> GREATAXE_ONEHAND_IDLE;
     public static AnimationManager.AnimationAccessor<StaticAnimation> GREATAXE_ONEHAND_WALK;
     public static AnimationManager.AnimationAccessor<StaticAnimation> GREATAXE_ONEHAND_RUN;
@@ -871,6 +888,10 @@ public class WOMPAnimations {
         EVIL_ODACHI_IDLE = builder.nextAccessor("biped/living/evil_odachi_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
+        EVIL_TACHI_NEW_IDLE = builder.nextAccessor("biped/living/evil_tachi_new_idle", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+
         EVIL_ODACHI_RUN = builder.nextAccessor("biped/living/evil_odachi_run", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
 
@@ -1421,6 +1442,322 @@ public class WOMPAnimations {
                                         (e, s, p) ->
                                                 e.getOriginal().addEffect(new MobEffectInstance(EpicFightMobEffects.STUN_IMMUNITY.get(), 4, 2)), AnimationEvent.Side.SERVER
                                 )));
+
+        EVIL_TACHI_NEW_AUTO1 = builder.nextAccessor("biped/combat/evil_tachi_new_auto1", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.0f, 0.3f, 0.5f, 0.65F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier( 1.10f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(1.6f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        EVIL_TACHI_NEW_AUTO1_SKILL = builder.nextAccessor("biped/skill/evil_tachi_new_auto1_skill", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.0f, 0.5f, 0.7f, 1.0F,
+                        WOMPCollider.EVIL_TACHI_BACK, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.70f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_ROD.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.AIR_BURST)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(1.4f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.0F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER,false)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        EVIL_TACHI_NEW_AUTO2 = builder.nextAccessor("biped/combat/evil_tachi_new_auto2", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.0f, 0.35f, 0.58f, 0.7F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier( 1.10f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(0.9f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        EVIL_TACHI_NEW_AUTO2_SKILL = builder.nextAccessor("biped/skill/evil_tachi_new_auto2_skill", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.0f, 0.7f, 0.85f, 0.95F,
+                        null, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.50f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.BLADE_RUSH_SKILL)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(1.6f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER,false)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        EVIL_TACHI_NEW_AUTO3 = builder.nextAccessor("biped/combat/evil_tachi_new_auto3", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, accessor, biped,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.5f, 0.7f, 1.3f, 0.9f,
+                                InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8f))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.LONG),
+
+                        new AttackAnimation.Phase(0.9f, 0.2f, 0.9f, 1.15f, 1.3f, 5.7f,
+                                InteractionHand.MAIN_HAND, biped.get().toolR, null)
+                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.9f))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(1))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                )
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        EVIL_TACHI_NEW_AUTO3_SKILL = builder.nextAccessor("biped/skill/evil_tachi_new_auto3_skill", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.0f, 0.59f, 0.78f, 0.95F,
+                        WOMPCollider.EVIL_TACHI_BACK, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.70f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_ROD.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE, EpicFightParticles.HIT_BLUNT)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(1.8f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, EpicFightSounds.BLUNT_HIT_HARD.get())
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.0F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER,false)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true)
+        );
+
+        EVIL_TACHI_NEW_DASH = builder.nextAccessor("biped/combat/evil_tachi_new_dash", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.0f, 0.4f, 0.63f, 0.9F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier( 1.10f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(0.9f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
+
+        EVIL_TACHI_NEW_AIRSLASH = builder.nextAccessor("biped/combat/evil_tachi_new_airslash", (accessor) ->
+                new AirSlashAnimation(0.12F, 0.05f, 0.4f, 0.9F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, EpicFightSounds.WHOOSH_BIG.get())
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.HOLD)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.3F)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.MOVE_VERTICAL, true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.NO_GRAVITY_TIME, TimePairList.create(0f, 0.65f))
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
+                        .addEvents(
+                                AnimUtils.LaunchEnemyAirSlash(2.0F, 2,15,0.38f))
+
+        );
+
+        EVIL_TACHI_NEW_AIRSLASH_SKILL = builder.nextAccessor("biped/skill/evil_tachi_new_airslash_skill", ac ->
+                new BasicMultipleAttackAnimation(0.1f, 0.2f, 0.57f, 0.81f, 0.99f, WOMPCollider.EVIL_TACHI_BATTOJUTSO, biped.get().rootJoint, ac, biped)
+
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, SoundEvents.WITHER_SHOOT)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, SoundEvents.FIREWORK_ROCKET_BLAST)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(0.8f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.LONG)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                        .addState(EntityState.TURNING_LOCKED, true)
+                        .addState(EntityState.LOCKON_ROTATE, true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER, false)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, false)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(0.55f, (e, s, p) -> {
+                                            var entity = e.getOriginal();
+                                            e.getOriginal().level().addParticle(
+                                                    ParticleTypes.EXPLOSION,
+                                                    entity.getX(),
+                                                    entity.getY() + 1.0,
+                                                    entity.getZ(),
+                                                    0.0, 0.0, 0.0
+                                            );
+                                        }
+                                        , AnimationEvent.Side.CLIENT)
+                        )
+                        .addEvents(AnimationEvent.InTimeEvent.create(
+                                0.55F,
+                                (entityPatch, animation, params) -> {
+                                    var entity = entityPatch.getOriginal();
+
+                                    entity.level().addParticle(
+                                            EpicFightParticles.WHITE_AFTERIMAGE.get(),
+                                            entity.getX(),
+                                            entity.getY(),
+                                            entity.getZ(),
+                                            Double.longBitsToDouble(entity.getId()),
+                                            0.0D,
+                                            0.0D
+                                    );
+                                },
+                                AnimationEvent.Side.CLIENT
+                        ))
+                        .addEvents(
+                                AnimationEvent.InPeriodEvent.create(0.4f, 0.8f, (e, s, p) -> {
+                                            var entity = e.getOriginal();
+                                            int numParticles = 3;
+                                            for (int i = 0; i < numParticles; i++) {
+                                                if (entity == null) return;
+
+                                                RandomSource random = RandomSource.create();
+                                                float L = -0.1F;
+                                                float R = 0.1F;
+                                                double xOffset = (random.nextDouble() - 0.3) * 0.3;
+                                                double yOffset = (random.nextDouble() - random.nextDouble()) * 0.3D;
+                                                double zOffset = (random.nextDouble() - 0.3) * 0.3;
+                                                Vec3 basePos = getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, -1F, -0.3F), Armatures.BIPED.get().rootJoint);
+                                                List<Vec3> positions = new ArrayList<>();
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(L, 0F, 0.6F), Armatures.BIPED.get().head));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(R, 0F, 0.6F), Armatures.BIPED.get().head));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(L, 0.06F, 0.1F), Armatures.BIPED.get().chest));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(R, 0.06F, 0.1F), Armatures.BIPED.get().chest));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.6F, 0F), Armatures.BIPED.get().handL));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.6F, 0F), Armatures.BIPED.get().handR));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.2F, 0.2F), Armatures.BIPED.get().legL));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.2F, 0.2F), Armatures.BIPED.get().legR));
+                                                for (Vec3 pos : positions) {
+                                                    if (pos != null) {
+                                                        Vec3 ovalPos = pos.add(xOffset, yOffset, zOffset);
+                                                        Particle particle = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, ovalPos.x, ovalPos.y, ovalPos.z, entity.getDeltaMovement().x, 0.052F, entity.getDeltaMovement().z);
+                                                        if (particle != null) {
+                                                            particle.setLifetime(7);
+                                                        }
+                                                    }
+                                                    if (basePos != null) {
+                                                        Particle particle1 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, basePos.x, basePos.y, basePos.z, entity.getDeltaMovement().x, 0.02F, entity.getDeltaMovement().z);
+                                                        Particle particle2 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, basePos.x, basePos.y + 0.26F, basePos.z, entity.getDeltaMovement().x, 0.012F, entity.getDeltaMovement().z);
+                                                        if (particle1 != null) {
+                                                            particle1.scale(0.92F);
+                                                            particle1.setLifetime(13);
+                                                        }
+                                                        if (particle2 != null) {
+                                                            particle2.scale(0.96F);
+                                                            particle2.setLifetime(3);
+                                                        }
+                                                    }
+
+                                                    e.getOriginal().level().addParticle(
+                                                            ParticleTypes.SMOKE,
+                                                            entity.getX(),
+                                                            entity.getY(),
+                                                            entity.getZ(),
+                                                            0.0, 0.0, -0.1);
+                                                }
+
+                                            }
+                                        }
+
+                                        , AnimationEvent.Side.CLIENT))
+
+        );
+        EVIL_TACHI_NEW_AIRSLASH_SKILL2 = builder.nextAccessor("biped/skill/evil_tachi_new_airslash_skill2", ac ->
+                new BasicMultipleAttackAnimation(0.1f, 0.2f, 0.2f, 0.45f, 0.7f, WOMPCollider.EVIL_TACHI_BATTOJUTSO, biped.get().rootJoint, ac, biped)
+
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, SoundEvents.WITHER_SHOOT)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, SoundEvents.FIREWORK_ROCKET_BLAST)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(1.4f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.MAX_STRIKES_MODIFIER, ValueModifier.adder(5))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.WEAPON_INNATE))
+                        .addState(EntityState.TURNING_LOCKED, true)
+                        .addState(EntityState.LOCKON_ROTATE, true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_HEAD_ROTATION, true)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.RESET_PLAYER_COMBO_COUNTER, false)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.CANCELABLE_MOVE, false)
+                        .addEvents(
+                                AnimationEvent.InTimeEvent.create(0.2f, (e, s, p) -> {
+                                            var entity = e.getOriginal();
+                                            e.getOriginal().level().addParticle(
+                                                    ParticleTypes.EXPLOSION,
+                                                    entity.getX(),
+                                                    entity.getY() + 1.0,
+                                                    entity.getZ(),
+                                                    0.0, 0.0, 0.0
+                                            );
+                                        }
+                                        , AnimationEvent.Side.CLIENT)
+                        )
+                        .addEvents(AnimationEvent.InTimeEvent.create(
+                                0.2F,
+                                (entityPatch, animation, params) -> {
+                                    var entity = entityPatch.getOriginal();
+
+                                    entity.level().addParticle(
+                                            EpicFightParticles.WHITE_AFTERIMAGE.get(),
+                                            entity.getX(),
+                                            entity.getY(),
+                                            entity.getZ(),
+                                            Double.longBitsToDouble(entity.getId()),
+                                            0.0D,
+                                            0.0D
+                                    );
+                                },
+                                AnimationEvent.Side.CLIENT
+                        ))
+                        .addEvents(
+                                AnimationEvent.InPeriodEvent.create(0.12f, 0.5f, (e, s, p) -> {
+                                            var entity = e.getOriginal();
+                                            int numParticles = 3;
+                                            for (int i = 0; i < numParticles; i++) {
+                                                if (entity == null) return;
+
+                                                RandomSource random = RandomSource.create();
+                                                float L = -0.1F;
+                                                float R = 0.1F;
+                                                double xOffset = (random.nextDouble() - 0.3) * 0.3;
+                                                double yOffset = (random.nextDouble() - random.nextDouble()) * 0.3D;
+                                                double zOffset = (random.nextDouble() - 0.3) * 0.3;
+                                                Vec3 basePos = getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, -1F, -0.3F), Armatures.BIPED.get().rootJoint);
+                                                List<Vec3> positions = new ArrayList<>();
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(L, 0F, 0.6F), Armatures.BIPED.get().head));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(R, 0F, 0.6F), Armatures.BIPED.get().head));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(L, 0.06F, 0.1F), Armatures.BIPED.get().chest));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(R, 0.06F, 0.1F), Armatures.BIPED.get().chest));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.6F, 0F), Armatures.BIPED.get().handL));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.6F, 0F), Armatures.BIPED.get().handR));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.2F, 0.2F), Armatures.BIPED.get().legL));
+                                                positions.add(getJointWithTranslation(Minecraft.getInstance().player, entity, new Vec3f(0F, 0.2F, 0.2F), Armatures.BIPED.get().legR));
+                                                for (Vec3 pos : positions) {
+                                                    if (pos != null) {
+                                                        Vec3 ovalPos = pos.add(xOffset, yOffset, zOffset);
+                                                        Particle particle = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, ovalPos.x, ovalPos.y, ovalPos.z, entity.getDeltaMovement().x, 0.052F, entity.getDeltaMovement().z);
+                                                        if (particle != null) {
+                                                            particle.setLifetime(7);
+                                                        }
+                                                    }
+                                                    if (basePos != null) {
+                                                        Particle particle1 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, basePos.x, basePos.y, basePos.z, entity.getDeltaMovement().x, 0.02F, entity.getDeltaMovement().z);
+                                                        Particle particle2 = Minecraft.getInstance().particleEngine.createParticle(ParticleTypes.SMOKE, basePos.x, basePos.y + 0.26F, basePos.z, entity.getDeltaMovement().x, 0.012F, entity.getDeltaMovement().z);
+                                                        if (particle1 != null) {
+                                                            particle1.scale(0.92F);
+                                                            particle1.setLifetime(13);
+                                                        }
+                                                        if (particle2 != null) {
+                                                            particle2.scale(0.96F);
+                                                            particle2.setLifetime(3);
+                                                        }
+                                                    }
+
+                                                    e.getOriginal().level().addParticle(
+                                                            ParticleTypes.SMOKE,
+                                                            entity.getX(),
+                                                            entity.getY(),
+                                                            entity.getZ(),
+                                                            0.0, 0.0, -0.1);
+                                                }
+
+                                            }
+                                        }
+
+                                        , AnimationEvent.Side.CLIENT))
+
+        );
+
+
+
+
+
 
         // ============================ HOLLOW LONGSWORD ================================
 

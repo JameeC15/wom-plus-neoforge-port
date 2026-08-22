@@ -8,11 +8,11 @@ import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.weaponinnate.SimpleWeaponInnateSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 
-public class Evil_beam extends SimpleWeaponInnateSkill {
+public class EvilBeam extends SimpleWeaponInnateSkill {
 
     private static final float STAMINA_COST = 6.0F;
 
-    public Evil_beam(SkillBuilder<? extends SimpleWeaponInnateSkill> builder) {
+    public EvilBeam(SkillBuilder<? extends SimpleWeaponInnateSkill> builder) {
         super((Builder) builder);
     }
 
@@ -27,8 +27,8 @@ public class Evil_beam extends SimpleWeaponInnateSkill {
         ) {
 
             if (// container.getStack() <= 0
-             !player.getOriginal().isCreative()
-                    && player.getStamina() >= STAMINA_COST) {
+                    !player.getOriginal().isCreative()
+                            && player.getStamina() >= STAMINA_COST) {
                 container.setStack(container.getStack() +1);
                 injectedStack = true;
             }
