@@ -91,6 +91,17 @@ public class WomPLUS {
                         source.accept(Pack.create("wom_override", Component.translatable("pack.wom_override.title"), false, resourcesSupplier, info, PackType.SERVER_DATA, Pack.Position.TOP, false, PackSource.SERVER)));
             }
         }
+        if (event.getPackType() == PackType.CLIENT_RESOURCES) {
+            Path resourcePath = ModList.get().getModFileById(WomPLUS.MODID).getFile().findResource("packs/womplus_trailpack");
+            PathPackResources pack = new PathPackResources(ModList.get().getModFileById(WomPLUS.MODID).getFile().getFileName() + ":" + resourcePath, false, resourcePath);
+            Pack.ResourcesSupplier resourcesSupplier = (string) -> pack;
+            Pack.Info info = Pack.readPackInfo("womplus_trailpack", resourcesSupplier);
+
+            if (info != null) {
+                event.addRepositorySource((source) ->
+                        source.accept(Pack.create("womplus_trailpack", Component.translatable("pack.womplus_trailpack.title"), false, resourcesSupplier, info, PackType.SERVER_DATA, Pack.Position.TOP, false, PackSource.BUILT_IN)));
+            }
+        }
     }
 
 

@@ -1,6 +1,7 @@
 package net.womp.gameasset;
 
 import net.minecraftforge.registries.DeferredRegister;
+import net.womp.client.particle.WomPlusParticles;
 import net.womp.effect.WOMPEffects;
 import net.womp.world.item.WOMPCreativeTab;
 
@@ -12,6 +13,7 @@ public class WOMPRegisters {
             List.of(
                     WOMPCreativeTab.CREATIVE_MODE_TABS,
                     WOMPEffects.EFFECTS,
+                    WomPlusParticles.PARTICLES,
                     WOMPSounds.SOUNDS
 
             );

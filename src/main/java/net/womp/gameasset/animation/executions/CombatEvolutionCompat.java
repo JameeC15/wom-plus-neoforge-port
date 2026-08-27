@@ -15,22 +15,22 @@ public class  CombatEvolutionCompat implements ICompatModule {
             event.registerExecutionByItem(WeaponsOfMinecraft.identifier("evil_tachi"), CapabilityItem.Styles.TWO_HAND,
                     WOMPExecutionTypes.EVIL_TACHI);
 
-            event.registerExecutionByItem(WeaponsOfMinecraft.identifier("iron_greataxe"), CapabilityItem.Styles.TWO_HAND,
+            event.registerExecutionByItem(WeaponsOfMinecraft.identifier("iron_greataxe"), CapabilityItem.Styles.OCHS,
                     WOMPExecutionTypes.GREATAXE_DUAL);
-            event.registerExecutionByItem(WeaponsOfMinecraft.identifier("golden_greataxe"), CapabilityItem.Styles.TWO_HAND,
+            event.registerExecutionByItem(WeaponsOfMinecraft.identifier("golden_greataxe"), CapabilityItem.Styles.OCHS,
                     WOMPExecutionTypes.GREATAXE_DUAL);
-            event.registerExecutionByItem(WeaponsOfMinecraft.identifier("diamond_greataxe"), CapabilityItem.Styles.TWO_HAND,
+            event.registerExecutionByItem(WeaponsOfMinecraft.identifier("diamond_greataxe"), CapabilityItem.Styles.OCHS,
                     WOMPExecutionTypes.GREATAXE_DUAL);
-            event.registerExecutionByItem(WeaponsOfMinecraft.identifier("netherite_greataxe"), CapabilityItem.Styles.TWO_HAND,
+            event.registerExecutionByItem(WeaponsOfMinecraft.identifier("netherite_greataxe"), CapabilityItem.Styles.OCHS,
                     WOMPExecutionTypes.GREATAXE_DUAL);
 
-        event.registerExecutionByItem(WeaponsOfMinecraft.identifier("netherite_greataxe"), CapabilityItem.Styles.ONE_HAND,
+        event.registerExecutionByItem(WeaponsOfMinecraft.identifier("netherite_greataxe"), CapabilityItem.Styles.TWO_HAND,
                 ExecutionTypeManager.COLOSSALSWORD_TYPE);
-        event.registerExecutionByItem(WeaponsOfMinecraft.identifier("diamond_greataxe"), CapabilityItem.Styles.ONE_HAND,
+        event.registerExecutionByItem(WeaponsOfMinecraft.identifier("diamond_greataxe"), CapabilityItem.Styles.TWO_HAND,
                 ExecutionTypeManager.COLOSSALSWORD_TYPE);
-        event.registerExecutionByItem(WeaponsOfMinecraft.identifier("golden_greataxe"), CapabilityItem.Styles.ONE_HAND,
+        event.registerExecutionByItem(WeaponsOfMinecraft.identifier("golden_greataxe"), CapabilityItem.Styles.TWO_HAND,
                 ExecutionTypeManager.COLOSSALSWORD_TYPE);
-        event.registerExecutionByItem(WeaponsOfMinecraft.identifier("iron_greataxe"), CapabilityItem.Styles.ONE_HAND,
+        event.registerExecutionByItem(WeaponsOfMinecraft.identifier("iron_greataxe"), CapabilityItem.Styles.TWO_HAND,
                 ExecutionTypeManager.COLOSSALSWORD_TYPE);
 
         event.registerExecutionByItem(WeaponsOfMinecraft.identifier("hollow_longsword"), CapabilityItem.Styles.ONE_HAND,

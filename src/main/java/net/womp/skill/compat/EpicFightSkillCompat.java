@@ -41,6 +41,21 @@ public class EpicFightSkillCompat {
         }
     }
     @SubscribeEvent
+    public static void onImpactGuardSkillCreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<GuardSkill.Builder> event) {
+        if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight", "impact_guard"))) {
+            GuardSkill.Builder builder = event.getSkillBuilder();
+            builder.addGuardMotion(WOMPWeaponCategories.EVIL_TACHI, (item, player) -> WOMPAnimations.EVIL_ODACHI_GUARD_HIT)
+                    .addGuardBreakMotion(WOMPWeaponCategories.EVIL_TACHI, (item, player) -> WOMPAnimations.EVIL_ODACHI_NEUTRALIZED);
+
+            builder.addGuardMotion(WOMPWeaponCategories.WOM_GREATAXE, (item, player) -> WOMPAnimations.GREATAXE_ONEHAND_GUARD_HIT)
+                    .addGuardBreakMotion(WOMPWeaponCategories.WOM_GREATAXE, (item, player) -> Animations.GREATSWORD_GUARD_BREAK);
+
+            builder.addGuardMotion(WOMPWeaponCategories.HOLLOW_LONGSWORD, (item, player) -> Animations.LONGSWORD_GUARD_HIT)
+                    .addGuardBreakMotion(WOMPWeaponCategories.HOLLOW_LONGSWORD, (item, player) -> Animations.BIPED_COMMON_NEUTRALIZED);
+
+        }
+    }
+    @SubscribeEvent
     public static void onSwordSkillCreate(SkillBuildEvent.ModRegistryWorker.SkillCreateEvent<SwordmasterSkill.Builder> event) {
         if (event.getRegistryName().equals(ResourceLocation.fromNamespaceAndPath("epicfight","swordmaster"))) {
             SwordmasterSkill.Builder builder = event.getSkillBuilder();

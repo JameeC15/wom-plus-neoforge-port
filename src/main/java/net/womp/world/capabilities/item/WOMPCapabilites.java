@@ -43,8 +43,7 @@ public class WOMPCapabilites {
                             WOMPAnimations.EVIL_TACHI_NEW_AUTO1,
                             WOMPAnimations.EVIL_TACHI_NEW_AUTO2,
                             WOMPAnimations.EVIL_TACHI_NEW_AUTO3,
-                            WOMPAnimations.EVIL_ODACHI_AUTO4,
-                            WOMPAnimations.EVIL_ODACHI_AUTO5,
+                            WOMPAnimations.EVIL_TACHI_NEW_AUTO4,
                             WOMPAnimations.EVIL_TACHI_NEW_DASH,
                             WOMPAnimations.EVIL_TACHI_NEW_AIRSLASH)
 
@@ -101,11 +100,11 @@ public class WOMPCapabilites {
                     .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> WOMPSkills.COMET)
 
                     .newStyleCombo(CapabilityItem.Styles.OCHS,
-                            WOMPAnimations.GREATAXE_DUAL_AUTO1,
-                            WOMPAnimations.GREATAXE_DUAL_AUTO2,
-                            WOMPAnimations.GREATAXE_DUAL_AUTO3,
-                            WOMPAnimations.GREATAXE_DUAL_AUTO4,
-                            WOMPAnimations.GREATAXE_DUAL_DASH,
+                            WOMPAnimations.GREATAXE_DUAL_REIFT_AUTO1,
+                            WOMPAnimations.GREATAXE_DUAL_REIFT_AUTO2,
+                            WOMPAnimations.GREATAXE_DUAL_REIFT_AUTO3,
+                            WOMPAnimations.GREATAXE_DUAL_REIFT_AUTO4,
+                            WOMPAnimations.GREATAXE_DUAL_REIFT_DASH,
                             WOMPAnimations.GREATAXE_AIRSLASH)
 
                     .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
@@ -122,7 +121,7 @@ public class WOMPCapabilites {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, WOMPAnimations.GREATAXE_ONEHAND_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, WOMPAnimations.GREATAXE_ONEHAND_GUARD)
 
-                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, WOMPAnimations.GREATAXE_DUAL_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.IDLE, WOMPAnimations.GREATAXE_DUAL_REIFT_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.BLOCK, Animations.SWORD_DUAL_GUARD)
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.WALK, WOMPAnimations.GREATAXE_DUAL_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.OCHS, LivingMotions.RUN, WOMPAnimations.GREATAXE_DUAL_RUN);

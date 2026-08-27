@@ -13,12 +13,13 @@ repositories {
     maven { url = "https://maven.bawnorton.com/releases" }
     dependencies {
         implementation fg.deobf("curse.maven:epic-fight-mod-405076:7789099")
-        implementation fg.deobf("curse.maven:wom-918614:8238967")
+        implementation fg.deobf("curse.maven:wom-918614:8632596")
         implementation fg.deobf("curse.maven:combat-evolution-1377795:8264195")
         implementation fg.deobf("curse.maven:dummmmmmy-multi-225738:6860192")
         implementation fg.deobf("curse.maven:moonlight-499980:7664875")
         compileOnly fg.deobf("curse.maven:epicfight-nightfall-1307848:8258765")
         runtimeOnly fg.deobf("curse.maven:embeddium-908741:5681725")
+        runtimeOnly fg.deobf("curse.maven:epic-fight-dawn-day-1463482:8700499")
         runtimeOnly fg.deobf("curse.maven:ferritecore-429235:4810975")
         runtimeOnly fg.deobf("curse.maven:canary-665658:5089991")
 

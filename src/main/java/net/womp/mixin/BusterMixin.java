@@ -19,7 +19,7 @@ public class BusterMixin {
     @Inject(method = "getWindupAnimation", at = @At("HEAD"), cancellable = true)
     private void evilTachiWindup(CapabilityItem capabilityItem, PlayerPatch<?> playerPatch, CallbackInfoReturnable<AnimationManager.AnimationAccessor<?>> cir) {
         if (capabilityItem.getWeaponCollider() == WOMPCollider.EVIL_TACHI) {
-            cir.setReturnValue(WOMPAnimations.EVIL_ODACHI_OVERHEADSLASH_CHARGE);
+            cir.setReturnValue(WOMPAnimations.EVIL_TACHI_NEW_DFB_WINDUP);
         }
     }
 
@@ -27,7 +27,7 @@ public class BusterMixin {
     @Inject(method = "getReleaseAnimataion", at = @At("HEAD"), cancellable = true)
     private void evilTachiRelease(CapabilityItem capabilityItem, PlayerPatch<?> playerPatch, CallbackInfoReturnable<AnimationManager.AnimationAccessor<? extends StaticAnimation>> cir){
         if(capabilityItem.getWeaponCollider() == WOMPCollider.EVIL_TACHI){
-            cir.setReturnValue(WOMPAnimations.EVIL_ODACHI_OVERHEADSLASH_RELEASE);
+            cir.setReturnValue(WOMPAnimations.EVIL_TACHI_NEW_DFB_RELEASE);
         }
     }
 

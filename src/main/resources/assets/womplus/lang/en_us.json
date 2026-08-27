@@ -12,5 +12,6 @@
   "skill.womplus.comet":"Comet",
   "skill.womplus.comet.tooltip":"Soar into the air and strike down upon your opponents with a devastating hit.",
   "skill.womplus.rahhh.tooltip":"\n\nGives effect that increases: \n  - Defence \n  - Attack Speed by 10% \n  - Stamina Regen \n  - Impact",
-  "pack.wom_override.title": "WOM Capability Override"
+  "pack.wom_override.title": "WOM Capability Override",
+  "pack.womplus_trailpack.title": "WomPlus WeaponTrail Pack"
 }

@@ -2,7 +2,9 @@ package net.womp.skill.weapon_innate;
 
 import com.google.common.collect.Maps;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.world.InteractionHand;
 import net.womp.gameasset.animation.WOMPAnimations;
+import net.womp.skill.WOMPSkills;
 import reascer.wom.world.item.WOMItems;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.types.AttackAnimation;
@@ -35,8 +37,9 @@ public class EvilPunishment extends WeaponInnateSkill {
         PlayerPatch<?> player = container.getExecutor();
 
         if (player.getOriginal().isSprinting()
-                && player.getOriginal().getMainHandItem().getItem() == WOMItems.EVIL_TACHI.get()
-        ) {
+                && Objects.equals(player.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
+                .getInnateSkill(player, player.getValidItemInHand(InteractionHand.MAIN_HAND)), WOMPSkills.EVIL_PUNISHMENT))
+        {
 
             if (// container.getStack() <= 0
              !player.getOriginal().isCreative()
@@ -70,7 +73,10 @@ public class EvilPunishment extends WeaponInnateSkill {
 
         PlayerPatch<?> player = container.getServerExecutor();
 
-        if (player.getOriginal().isSprinting() && player.getOriginal().getMainHandItem().getItem() == WOMItems.EVIL_TACHI.get()) {
+        if (player.getOriginal().isSprinting()
+                && Objects.equals(player.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
+                .getInnateSkill(player, player.getValidItemInHand(InteractionHand.MAIN_HAND)), WOMPSkills.EVIL_PUNISHMENT))
+        {
 
             if (!player.getOriginal().isCreative()){
 
@@ -78,7 +84,7 @@ public class EvilPunishment extends WeaponInnateSkill {
             }
 
             player.playAnimationSynchronized(
-                    WOMPAnimations.EVIL_ODACHI_BATTOJUTSO,
+                    WOMPAnimations.EVIL_TACHI_NEW_BATTOJUTSO,
                     0.0F
             );
 
@@ -122,6 +128,10 @@ public class EvilPunishment extends WeaponInnateSkill {
                 WOMPAnimations.EVIL_TACHI_NEW_AUTO3,
                 WOMPAnimations.EVIL_TACHI_NEW_AUTO3_SKILL
         );
+        this.comboAnimation.put(
+                WOMPAnimations.EVIL_TACHI_NEW_AUTO4,
+                WOMPAnimations.EVIL_TACHI_NEW_AUTO4_SKILL
+        );
 
         this.comboAnimation.put(
                 WOMPAnimations.EVIL_TACHI_NEW_AIRSLASH,
@@ -133,7 +143,11 @@ public class EvilPunishment extends WeaponInnateSkill {
         );
         this.comboAnimation.put(
                 WOMPAnimations.EVIL_TACHI_NEW_DASH,
-                WOMPAnimations.EVIL_TACHI_NEW_AIRSLASH_SKILL2
+                WOMPAnimations.EVIL_TACHI_NEW_DASH_SKILL
+        );
+        this.comboAnimation.put(
+                WOMPAnimations.EVIL_TACHI_NEW_BATTOJUTSO,
+                WOMPAnimations.EVIL_TACHI_NEW_BATTOJUTSO_SKILL
         );
 
         return this;
