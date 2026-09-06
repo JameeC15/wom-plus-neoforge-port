@@ -945,13 +945,21 @@ public class WOMPAnimations {
 
         GREATAXE_DUAL_REIFT_AUTO3 = builder.nextAccessor("biped/combat/greataxe_dual_reift_attack3", (accessor) ->
                 new BasicMultipleAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.5f, 0.7f, 0.9f, 1.23f, 3.51f, InteractionHand.MAIN_HAND,
-                                AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolR, null),
-                                AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolL, null))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.10F))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.NONE)
+                        new AttackAnimation.Phase(0.0f, 0.5f, 0.45f, 0.6f, 1.23f, 0.6f, InteractionHand.MAIN_HAND,
+                                AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolR, null))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.50F))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.SHORT)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(1.3F))
-                                .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F)))
+                                .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F)),
+
+        new AttackAnimation.Phase(0.6f, 0.5f, 0.6f, 0.8f, 1.23f, 5.6f, InteractionHand.OFF_HAND,
+                AttackAnimation.JointColliderPair.of(Armatures.BIPED.get().toolL, null))
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.60F))
+                .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.NONE)
+                .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.setter(1.3F))
+                .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(10F))
+
+                )
 
                         .addProperty(AnimationProperty.AttackAnimationProperty.BASIS_ATTACK_SPEED, 1.1F)
                         .addEvents(
@@ -1667,12 +1675,12 @@ public class WOMPAnimations {
 
         EVIL_TACHI_NEW_AUTO3 = builder.nextAccessor("biped/combat/evil_tachi_new_auto3", (accessor) ->
                 new BasicMultipleAttackAnimation(0.12F, accessor, biped,
-                        new AttackAnimation.Phase(0.0f, 0.1f, 0.5f, 0.7f, 1.3f, 0.9f,
+                        new AttackAnimation.Phase(0.0f, 0.1f, 0.5f, 0.7f, 1.3f, 0.7f,
                                 InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.8f))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE,StunType.LONG),
 
-                        new AttackAnimation.Phase(0.9f, 0.2f, 0.9f, 1.15f, 1.3f, 5.7f,
+                        new AttackAnimation.Phase(0.7f, 0.2f, 0.9f, 1.15f, 1.3f, 5.7f,
                                 InteractionHand.MAIN_HAND, biped.get().toolR, null)
                                 .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.9f))
                                 .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(1))
