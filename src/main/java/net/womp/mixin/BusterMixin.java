@@ -6,6 +6,7 @@ import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import reascer.wom.gameasset.colliders.WOMWeaponColliders;
 import reascer.wom.skill.guard.DreadFullBusterSkill;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.types.StaticAnimation;
@@ -21,6 +22,9 @@ public class BusterMixin {
         if (capabilityItem.getWeaponCollider() == WOMPCollider.EVIL_TACHI) {
             cir.setReturnValue(WOMPAnimations.EVIL_TACHI_NEW_DFB_WINDUP);
         }
+        if (capabilityItem.getWeaponCollider() == WOMWeaponColliders.STAFF_EXTENTION) {
+            cir.setReturnValue(WOMPAnimations.BLACKSTAR_DFB_WINDUP);
+        }
     }
 
     @SuppressWarnings("SpellCheckingInspection")
@@ -28,6 +32,9 @@ public class BusterMixin {
     private void evilTachiRelease(CapabilityItem capabilityItem, PlayerPatch<?> playerPatch, CallbackInfoReturnable<AnimationManager.AnimationAccessor<? extends StaticAnimation>> cir){
         if(capabilityItem.getWeaponCollider() == WOMPCollider.EVIL_TACHI){
             cir.setReturnValue(WOMPAnimations.EVIL_TACHI_NEW_DFB_RELEASE);
+        }
+        if (capabilityItem.getWeaponCollider() == WOMWeaponColliders.STAFF_EXTENTION) {
+            cir.setReturnValue(WOMPAnimations.BLACKSTAR_DFB_RELEASE);
         }
     }
 

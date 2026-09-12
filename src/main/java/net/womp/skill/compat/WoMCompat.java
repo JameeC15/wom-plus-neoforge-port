@@ -9,10 +9,12 @@ import net.minecraftforge.registries.RegisterEvent;
 import net.womp.gameasset.animation.WOMPAnimations;
 import net.womp.skill.WOMPSkills;
 import net.womp.world.capabilities.item.WOMPWeaponCategories;
+import reascer.wom.gameasset.WOMAnimations;
 import reascer.wom.gameasset.WOMSkills;
 
 import reascer.wom.gameasset.animations.weapons.AnimsHerrscher;
 import reascer.wom.world.capabilities.item.GesetzCapability;
+import reascer.wom.world.capabilities.item.WOMWeaponCategories;
 import reascer.wom.world.item.WOMItems;
 import yesman.epicfight.api.client.forgeevent.WeaponCategoryIconRegisterEvent;
 import yesman.epicfight.compat.ICompatModule;
@@ -21,6 +23,7 @@ import yesman.epicfight.gameasset.EpicFightSkills;
 import yesman.epicfight.skill.guard.GuardSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
 import yesman.epicfight.world.capabilities.item.CapabilityItem;
+import yesman.epicfight.world.capabilities.item.WeaponCapability;
 import yesman.epicfight.world.capabilities.item.WeaponCategory;
 
 import java.lang.reflect.Field;
@@ -83,6 +86,14 @@ public class WoMCompat implements ICompatModule {
         advancedGuardMotions.put(WOMPWeaponCategories.EVIL_TACHI, (itemCap, playerpatch) ->
                 WOMPAnimations.EVIL_ODACHI_COUNTER);
 
+        guardMotions.put(WOMPWeaponCategories.BLACKSTAR, (item, player) ->
+                Animations.SPEAR_GUARD_HIT);
+        guardBreakMotions.put(WOMPWeaponCategories.BLACKSTAR, (item, player) ->
+                Animations.BIPED_COMMON_NEUTRALIZED);
+        advancedGuardMotions.put(WOMPWeaponCategories.BLACKSTAR, (itemCap, playerpatch) ->
+                WOMPAnimations.BLACKSTAR_COUNTERATTACK);
+
+
 
         guardMotions.put(WOMPWeaponCategories.WOM_GREATAXE, (item, player) ->
                 WOMPAnimations.GREATAXE_ONEHAND_GUARD_HIT);
@@ -107,7 +118,7 @@ public class WoMCompat implements ICompatModule {
             return WOMPAnimations.HOLLOW_GUARD_STANCE_COUNTER;
         }else return playerpatch.getHoldingItemCapability(InteractionHand.OFF_HAND) instanceof GesetzCapability ? AnimsHerrscher.HERRSCHER_TRANE : Animations.SWEEPING_EDGE;
     }
-                            );
+    );
 
 
         Field temp;

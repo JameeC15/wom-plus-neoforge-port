@@ -11,6 +11,8 @@ import net.womp.gameasset.animation.WOMPAnimations;
 import net.womp.gameasset.animation.WOMPCollider;
 import net.womp.skill.WOMPSkills;
 import reascer.wom.gameasset.WOMSkills;
+import reascer.wom.gameasset.animations.weapons.AnimsBlackstar;
+import reascer.wom.gameasset.colliders.WOMWeaponColliders;
 import yesman.epicfight.api.animation.LivingMotions;
 import yesman.epicfight.api.forgeevent.WeaponCapabilityPresetRegistryEvent;
 import yesman.epicfight.gameasset.Animations;
@@ -83,6 +85,35 @@ public class WOMPCapabilites {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.KNEEL, WOMPAnimations.EVIL_ODACHI_KNEEL)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, WOMPAnimations.EVIL_ODACHI_RUN)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, WOMPAnimations.EVIL_ODACHI_GUARD);
+
+    // this was for test purposes
+
+    public static final Function<Item, CapabilityItem.Builder> BLACKSTAR = (item) ->
+            WeaponCapability.builder()
+                    .category(WOMPWeaponCategories.BLACKSTAR)
+                    .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
+                    .collider(WOMWeaponColliders.STAFF_EXTENTION)
+                  .swingSound(EpicFightSounds.WHOOSH_BIG.get())
+                    .hitParticle(EpicFightParticles.HIT_BLUNT.get())
+                    .hitSound(EpicFightSounds.BLUNT_HIT_HARD.get())
+                    .passiveSkill(WOMSkills.UNBREAKABLE_PASSIVE)
+                    .canBePlacedOffhand(false)
+                    .innateSkill(CapabilityItem.Styles.TWO_HAND, ip -> WOMSkills.UNBREAKBLE)
+
+                    .newStyleCombo(CapabilityItem.Styles.TWO_HAND,
+                            AnimsBlackstar.BLACKSTAR_ATTACK_1,
+                            AnimsBlackstar.BLACKSTAR_ATTACK_2,
+                            AnimsBlackstar.BLACKSTAR_ATTACK_3,
+                            AnimsBlackstar.BLACKSTAR_ATTACK_4,
+                            WOMPAnimations.EVIL_TACHI_NEW_AUTO1,
+                            AnimsBlackstar.BLACKSTAR_CHOCKNWAVE,
+                            AnimsBlackstar.BLACKSTAR_GRAVITY)
+
+
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, AnimsBlackstar.BLACKSTAR_IDLE)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, AnimsBlackstar.BLACKSTAR_WALK)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, AnimsBlackstar.BLACKSTAR_RUN)
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
 
     public static final Function<Item, CapabilityItem.Builder> GREATAXE = (item) ->
             WeaponCapability.builder()
@@ -178,6 +209,7 @@ public class WOMPCapabilites {
     @SubscribeEvent
     public static void WeaponMovesetRegister(WeaponCapabilityPresetRegistryEvent event) {
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID, "greataxe"), GREATAXE);
+        event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID, "blackstar"), BLACKSTAR);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID, "evil_tachi_reift"), EVIL_TACHI_REIFT);
         event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID, "hollow_longsword"), HOLLOW_LONGSWORD);
             event.getTypeEntry().put(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID, "evil_tachi"), EVIL_TACHI);

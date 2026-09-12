@@ -23,6 +23,7 @@ import net.womp.gameasset.WOMPSounds;
 import org.joml.Vector3f;
 import reascer.wom.animation.WomAnimationProperty;
 import reascer.wom.animation.attacks.BasicMultipleAttackAnimation;
+import reascer.wom.gameasset.colliders.WOMWeaponColliders;
 import reascer.wom.particle.WOMParticles;
 import reascer.wom.world.damagesources.WOMDamageType;
 import yesman.epicfight.api.animation.AnimationManager;
@@ -51,6 +52,11 @@ import static net.womp.api.animation.JointTrack.getJointWithTranslation;
 
 
 public class WOMPAnimations {
+
+    // BLACKSTAR
+    public static AnimationManager.AnimationAccessor<StaticAnimation> BLACKSTAR_DFB_WINDUP;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> BLACKSTAR_DFB_RELEASE;
+    public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> BLACKSTAR_COUNTERATTACK;
 
     public static AnimationManager.AnimationAccessor<StaticAnimation> EVIL_ODACHI_WALK;
     public static AnimationManager.AnimationAccessor<StaticAnimation> EVIL_ODACHI_IDLE;
@@ -155,6 +161,35 @@ public class WOMPAnimations {
 
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
+
+        BLACKSTAR_DFB_WINDUP = builder.nextAccessor("biped/skill/blackstar_dfb_windup", ac ->
+                new StaticAnimation(1.2F, false, ac, biped)
+                        .newConditionalTimePair((entitypatch) -> entitypatch.getOriginal().isUsingItem() ? 0 : 1, 0.0F, Float.MAX_VALUE)
+                        .addConditionalState(0, EntityState.UPDATE_LIVING_MOTION, false)
+                        .addConditionalState(1, EntityState.UPDATE_LIVING_MOTION, true)
+                        .newTimePair(0.0F, Float.MAX_VALUE).addStateRemoveOld(EntityState.CAN_SWITCH_HAND_ITEM, false)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.FIXED_HEAD_ROTATION, true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false)
+        );
+
+        BLACKSTAR_DFB_RELEASE = builder.nextAccessor("biped/skill/blackstar_dfb_release", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.05F, 0.2F, 0.4F, 0.50F, WOMWeaponColliders.BLACKSTAR_HEAD, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE,WOMDamageType.BLACKOUT))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addState(EntityState.TURNING_LOCKED, true)
+                        .addState(EntityState.LOCKON_ROTATE, true)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false));
+
+        BLACKSTAR_COUNTERATTACK = builder.nextAccessor("biped/skill/blackstar_counterattack", (accessor) ->
+                new BasicMultipleAttackAnimation(0.12F, 0.0f, 0.32f, 0.5f, 0.7F, null, biped.get().toolR, accessor, biped)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(1.4f))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
+                        .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));
 
         GREATAXE_DUAL_IDLE = builder.nextAccessor("biped/living/greataxe_idle", ac ->
                 new StaticAnimation(0.12F, true, ac, biped));
