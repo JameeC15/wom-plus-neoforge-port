@@ -18,22 +18,22 @@ import yesman.epicfight.world.capabilities.item.CapabilityItem;
 public class BusterMixin {
 
     @Inject(method = "getWindupAnimation", at = @At("HEAD"), cancellable = true)
-    private void evilTachiWindup(CapabilityItem capabilityItem, PlayerPatch<?> playerPatch, CallbackInfoReturnable<AnimationManager.AnimationAccessor<?>> cir) {
+    private void DFBWindup(CapabilityItem capabilityItem, PlayerPatch<?> playerPatch, CallbackInfoReturnable<AnimationManager.AnimationAccessor<?>> cir) {
         if (capabilityItem.getWeaponCollider() == WOMPCollider.EVIL_TACHI) {
             cir.setReturnValue(WOMPAnimations.EVIL_TACHI_NEW_DFB_WINDUP);
         }
-        if (capabilityItem.getWeaponCollider() == WOMWeaponColliders.STAFF_EXTENTION) {
+        if (capabilityItem.getWeaponCollider() == WOMPCollider.BLACKSTAR) {
             cir.setReturnValue(WOMPAnimations.BLACKSTAR_DFB_WINDUP);
         }
     }
 
     @SuppressWarnings("SpellCheckingInspection")
     @Inject(method = "getReleaseAnimataion", at = @At("HEAD"), cancellable = true)
-    private void evilTachiRelease(CapabilityItem capabilityItem, PlayerPatch<?> playerPatch, CallbackInfoReturnable<AnimationManager.AnimationAccessor<? extends StaticAnimation>> cir){
+    private void DFBRelease(CapabilityItem capabilityItem, PlayerPatch<?> playerPatch, CallbackInfoReturnable<AnimationManager.AnimationAccessor<? extends StaticAnimation>> cir){
         if(capabilityItem.getWeaponCollider() == WOMPCollider.EVIL_TACHI){
             cir.setReturnValue(WOMPAnimations.EVIL_TACHI_NEW_DFB_RELEASE);
         }
-        if (capabilityItem.getWeaponCollider() == WOMWeaponColliders.STAFF_EXTENTION) {
+        if (capabilityItem.getWeaponCollider() == WOMPCollider.BLACKSTAR) {
             cir.setReturnValue(WOMPAnimations.BLACKSTAR_DFB_RELEASE);
         }
     }

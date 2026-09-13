@@ -19,6 +19,7 @@ public class WOMPCollider {
         return collider;
     }
 
+    public static final Collider BLACKSTAR = registerCollider(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID,"blackstar"),new MultiOBBCollider(3, 0.5D, 0.5D, 2.2D, 0D, 0.0D, -0.0D));
     public static final Collider EVIL_TACHI = registerCollider(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID,"evil_tachi"),new MultiOBBCollider(3, 0.3D, 0.3D, 1.6D, 0D, 0.0D, -1.6D));
     public static final Collider EVIL_TACHI_BACK = registerCollider(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID,"evil_tachi_back"),new MultiOBBCollider(3, 0.35D, 0.35D, 0.6D, 0D, 0.0D, 0.7D));
     public static final Collider EVIL_TACHI_SPECIAL = registerCollider(ResourceLocation.fromNamespaceAndPath(WomPLUS.MODID,"evil_tachi_special"),new MultiOBBCollider(2, 0.55D, 0.65D, 0.6D, 0D, 0.3D, 0.45D));

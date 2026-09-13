@@ -54,6 +54,9 @@ import static net.womp.api.animation.JointTrack.getJointWithTranslation;
 public class WOMPAnimations {
 
     // BLACKSTAR
+    public static AnimationManager.AnimationAccessor<StaticAnimation> BLACKSTAR_GUARD;
+    public static AnimationManager.AnimationAccessor<GuardAnimation> BLACKSTAR_GUARD_HIT;
+    public static AnimationManager.AnimationAccessor<LongHitAnimation> BLACKSTAR_NEUTRALIZED;
     public static AnimationManager.AnimationAccessor<StaticAnimation> BLACKSTAR_DFB_WINDUP;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> BLACKSTAR_DFB_RELEASE;
     public static AnimationManager.AnimationAccessor<BasicMultipleAttackAnimation> BLACKSTAR_COUNTERATTACK;
@@ -162,6 +165,15 @@ public class WOMPAnimations {
     public static void build(AnimationManager.AnimationBuilder builder) {
         Armatures.ArmatureAccessor<HumanoidArmature> biped = Armatures.BIPED;
 
+        BLACKSTAR_GUARD = builder.nextAccessor("biped/living/blackstar_guard", ac ->
+                new StaticAnimation(0.12F, true, ac, biped));
+
+        BLACKSTAR_GUARD_HIT = builder.nextAccessor("biped/living/blackstar_guard_hit", ac ->
+                new GuardAnimation(0.12F, ac, biped));
+
+        BLACKSTAR_NEUTRALIZED = builder.nextAccessor("biped/living/blackstar_neutralized", ac ->
+                new LongHitAnimation(0.12F, ac, biped));
+
         BLACKSTAR_DFB_WINDUP = builder.nextAccessor("biped/skill/blackstar_dfb_windup", ac ->
                 new StaticAnimation(1.2F, false, ac, biped)
                         .newConditionalTimePair((entitypatch) -> entitypatch.getOriginal().isUsingItem() ? 0 : 1, 0.0F, Float.MAX_VALUE)
@@ -174,7 +186,7 @@ public class WOMPAnimations {
 
         BLACKSTAR_DFB_RELEASE = builder.nextAccessor("biped/skill/blackstar_dfb_release", (accessor) ->
                 new BasicMultipleAttackAnimation(0.12F, 0.05F, 0.2F, 0.4F, 0.50F, WOMWeaponColliders.BLACKSTAR_HEAD, biped.get().toolR, accessor, biped)
-                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(1.2F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.9F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.ARMOR_NEGATION_MODIFIER, ValueModifier.adder(20F))
                         .addProperty(AnimationProperty.AttackPhaseProperty.SOURCE_TAG, Set.of(EpicFightDamageTypeTags.GUARD_PUNCTURE,WOMDamageType.BLACKOUT))
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
@@ -184,9 +196,11 @@ public class WOMPAnimations {
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, false));
 
         BLACKSTAR_COUNTERATTACK = builder.nextAccessor("biped/skill/blackstar_counterattack", (accessor) ->
-                new BasicMultipleAttackAnimation(0.12F, 0.0f, 0.32f, 0.5f, 0.7F, null, biped.get().toolR, accessor, biped)
+                new BasicMultipleAttackAnimation(0.12F, 0.0f, 0.42f, 0.6f, 0.7F, null, biped.get().toolR, accessor, biped)
                         .addProperty(AnimationProperty.AttackPhaseProperty.IMPACT_MODIFIER, ValueModifier.adder(1.4f))
                         .addProperty(AnimationProperty.AttackPhaseProperty.STUN_TYPE, StunType.NONE)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.4F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.PARTICLE,EpicFightParticles.AIR_BURST)
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, Animations.ReusableSources.CONSTANT_ONE)
                         .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE, false)
                         .addProperty(AnimationProperty.ActionAnimationProperty.CANCELABLE_MOVE, true));

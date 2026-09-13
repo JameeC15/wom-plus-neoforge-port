@@ -36,6 +36,9 @@ public class  CombatEvolutionCompat implements ICompatModule {
         event.registerExecutionByItem(WeaponsOfMinecraft.identifier("hollow_longsword"), CapabilityItem.Styles.ONE_HAND,
                 ExecutionTypeManager.COLOSSALSWORD_TYPE);
 
+        event.registerExecutionByItem(WeaponsOfMinecraft.identifier("blackstar"), CapabilityItem.Styles.TWO_HAND,
+                WOMPExecutionTypes.BLACKSTAR);
+
 
 
     }

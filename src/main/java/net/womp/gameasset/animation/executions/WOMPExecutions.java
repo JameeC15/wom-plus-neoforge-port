@@ -4,6 +4,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.DustParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
@@ -36,6 +37,9 @@ import static net.womp.api.animation.JointTrack.getJointWithTranslation;
 
 public class WOMPExecutions {
 
+    public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> BLACKSTAR_EXECUTE;
+    public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> BLACKSTAR_EXECUTED;
+
     public static AnimationManager.AnimationAccessor<ExecutionAttackAnimation> GREATAXE_DUAL_EXECUTE;
     public static AnimationManager.AnimationAccessor<ExecutionHitAnimation> GREATAXE_DUAL_EXECUTED;
 
@@ -45,14 +49,23 @@ public class WOMPExecutions {
     public static void build(AnimationManager.AnimationBuilder builder) {
 
         MultiCollider<OBBCollider> executionCollider = new MultiOBBCollider(3, 1.25F, 1.5F, 1.5F, 0.0F, 1.5F, -1.5F);
+        MultiCollider<OBBCollider> executionColliderBIG = new MultiOBBCollider(3, 4.25F, 1.5F, 2.5F, -2.0F, 1.5F, -2.0F);
         MultiCollider<OBBCollider> evil_collider = new MultiOBBCollider(1, 2.0F, 7.5F, 9.5F, 0.0F, 3.5F, 1.5F);
         AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION = (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 1.0F;
         AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTED = (self, entitypatch, speed, prevElapsedTime, elapsedTime) -> 0.8333333F;
 
+        BLACKSTAR_EXECUTED = builder.nextAccessor("biped/execution/blackstar_executed", (accessor) ->
+                (new ExecutionHitAnimation(0.0f, accessor, Armatures.BIPED))
+                        .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
+        );
+
+        BLACKSTAR_EXECUTE = builder.nextAccessor("biped/execution/blackstar_execute", (accessor) ->
+                blackstar(accessor, executionColliderBIG, CONSTANT_EXECUTION, 0.24f, 0.3f, 1.30f, 1.4f,3.9f,3.95f)
+                        .addProperty(AnimationProperty.AttackAnimationProperty.FIXED_MOVE_DISTANCE,true));
+
         EVIL_TACHI_EXECUTED = builder.nextAccessor("biped/execution/evil_odachi_executed", (accessor) ->
                 (new ExecutionHitAnimation(0.0f, accessor, Armatures.BIPED))
                         .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTED)
-
         );
         EVIL_TACHI_EXECUTE = builder.nextAccessor("biped/execution/evil_odachi_execute", (accessor)->
                 evil_execution(accessor,evil_collider,CONSTANT_EXECUTION,0.4f,0.41f,3.02f,3.05f)
@@ -263,6 +276,36 @@ public class WOMPExecutions {
 
 
     }
+    @SuppressWarnings("RedundantArrayCreation")
+    private static ExecutionAttackAnimation blackstar(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,
+                                                           AnimationProperty.PlaybackSpeedModifier CONSTANT_EXECUTION,
+                                                           float preDelay1,
+                                                           float contact1 ,
+                                                           float preDelay2,
+                                                           float contact2,
+                                                           float preDelay3,
+                                                            float contact3
+
+    )
+    {
+        return (new ExecutionAttackAnimation(0.01F, accessor,
+
+                Armatures.BIPED, new ExecutionAttackAnimation.ExecutionPhase[]{(new ExecutionAttackAnimation.ExecutionPhase(false, 0.0F, 0.0F, preDelay1, contact1, 12.73F, 0.83F, Armatures.BIPED.get().rootJoint, executionCollider))
+                .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(0.75F)),
+
+                (new ExecutionAttackAnimation.ExecutionPhase(false, 0.8F, 0.0F, preDelay2, contact2, 18.0F, 2.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.multiplier(2.15F))
+                ,
+
+                (new ExecutionAttackAnimation.ExecutionPhase(true, 1.23F, 0.0F, preDelay3, contact3, 18.0F, 20.0F, Armatures.BIPED.get().rootJoint, executionCollider))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.DAMAGE_MODIFIER, ValueModifier.setter(0.1F))
+                        .addProperty(AnimationProperty.AttackPhaseProperty.SWING_SOUND, SoundEvents.EMPTY)
+                        .addProperty(AnimationProperty.AttackPhaseProperty.HIT_SOUND, SoundEvents.EMPTY)
+        }))
+                .addProperty(AnimationProperty.StaticAnimationProperty.PLAY_SPEED_MODIFIER, CONSTANT_EXECUTION);
+
+    }
+
 
     @SuppressWarnings("RedundantArrayCreation")
     private static ExecutionAttackAnimation evil_execution(AnimationManager.AnimationAccessor<ExecutionAttackAnimation> accessor, MultiCollider<OBBCollider> executionCollider,

@@ -92,7 +92,7 @@ public class WOMPCapabilites {
             WeaponCapability.builder()
                     .category(WOMPWeaponCategories.BLACKSTAR)
                     .styleProvider((pp) -> CapabilityItem.Styles.TWO_HAND)
-                    .collider(WOMWeaponColliders.STAFF_EXTENTION)
+                    .collider(WOMPCollider.BLACKSTAR)
                   .swingSound(EpicFightSounds.WHOOSH_BIG.get())
                     .hitParticle(EpicFightParticles.HIT_BLUNT.get())
                     .hitSound(EpicFightSounds.BLUNT_HIT_HARD.get())
@@ -105,7 +105,6 @@ public class WOMPCapabilites {
                             AnimsBlackstar.BLACKSTAR_ATTACK_2,
                             AnimsBlackstar.BLACKSTAR_ATTACK_3,
                             AnimsBlackstar.BLACKSTAR_ATTACK_4,
-                            WOMPAnimations.EVIL_TACHI_NEW_AUTO1,
                             AnimsBlackstar.BLACKSTAR_CHOCKNWAVE,
                             AnimsBlackstar.BLACKSTAR_GRAVITY)
 
@@ -113,7 +112,7 @@ public class WOMPCapabilites {
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.IDLE, AnimsBlackstar.BLACKSTAR_IDLE)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.WALK, AnimsBlackstar.BLACKSTAR_WALK)
                     .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.RUN, AnimsBlackstar.BLACKSTAR_RUN)
-                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, Animations.SPEAR_GUARD);
+                    .livingMotionModifier(CapabilityItem.Styles.TWO_HAND, LivingMotions.BLOCK, WOMPAnimations.BLACKSTAR_GUARD);
 
     public static final Function<Item, CapabilityItem.Builder> GREATAXE = (item) ->
             WeaponCapability.builder()

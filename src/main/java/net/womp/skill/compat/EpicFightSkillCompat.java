@@ -35,6 +35,9 @@ public class EpicFightSkillCompat {
             builder.addGuardMotion(WOMPWeaponCategories.WOM_GREATAXE, (item, player) -> WOMPAnimations.GREATAXE_ONEHAND_GUARD_HIT)
                     .addGuardBreakMotion(WOMPWeaponCategories.WOM_GREATAXE, (item, player) -> Animations.GREATSWORD_GUARD_BREAK);
 
+            builder.addGuardMotion(WOMPWeaponCategories.BLACKSTAR, (item, player) -> WOMPAnimations.BLACKSTAR_GUARD_HIT)
+                    .addGuardBreakMotion(WOMPWeaponCategories.BLACKSTAR, (item, player) -> WOMPAnimations.BLACKSTAR_NEUTRALIZED);
+
             builder.addGuardMotion(WOMPWeaponCategories.HOLLOW_LONGSWORD, (item, player) -> Animations.LONGSWORD_GUARD_HIT)
                     .addGuardBreakMotion(WOMPWeaponCategories.HOLLOW_LONGSWORD, (item, player) -> Animations.BIPED_COMMON_NEUTRALIZED);
 
@@ -49,6 +52,9 @@ public class EpicFightSkillCompat {
 
             builder.addGuardMotion(WOMPWeaponCategories.WOM_GREATAXE, (item, player) -> WOMPAnimations.GREATAXE_ONEHAND_GUARD_HIT)
                     .addGuardBreakMotion(WOMPWeaponCategories.WOM_GREATAXE, (item, player) -> Animations.GREATSWORD_GUARD_BREAK);
+
+            builder.addGuardMotion(WOMPWeaponCategories.BLACKSTAR, (item, player) -> WOMPAnimations.BLACKSTAR_GUARD_HIT)
+                    .addGuardBreakMotion(WOMPWeaponCategories.BLACKSTAR, (item, player) -> WOMPAnimations.BLACKSTAR_NEUTRALIZED);
 
             builder.addGuardMotion(WOMPWeaponCategories.HOLLOW_LONGSWORD, (item, player) -> Animations.LONGSWORD_GUARD_HIT)
                     .addGuardBreakMotion(WOMPWeaponCategories.HOLLOW_LONGSWORD, (item, player) -> Animations.BIPED_COMMON_NEUTRALIZED);
@@ -71,6 +77,10 @@ public class EpicFightSkillCompat {
             builder.addGuardMotion(WOMPWeaponCategories.WOM_GREATAXE, (item, player) -> WOMPAnimations.GREATAXE_ONEHAND_GUARD_HIT)
                     .addGuardBreakMotion(WOMPWeaponCategories.WOM_GREATAXE, (item, player) -> Animations.GREATSWORD_GUARD_BREAK);
 
+            builder.addGuardMotion(WOMPWeaponCategories.BLACKSTAR, (item, player) -> WOMPAnimations.BLACKSTAR_GUARD_HIT)
+                    .addGuardBreakMotion(WOMPWeaponCategories.BLACKSTAR, (item, player) -> WOMPAnimations.BLACKSTAR_NEUTRALIZED);
+
+
             builder.addGuardMotion(WOMPWeaponCategories.EVIL_TACHI, (item, player) -> WOMPAnimations.EVIL_ODACHI_GUARD_HIT)
                     .addGuardBreakMotion(WOMPWeaponCategories.EVIL_TACHI, (item, player) -> WOMPAnimations.EVIL_ODACHI_NEUTRALIZED)
                     .addAdvancedGuardMotion(WOMPWeaponCategories.EVIL_TACHI, (item, player) -> List.of(WOMPAnimations.EVIL_ODACHI_PARRY1, WOMPAnimations.EVIL_ODACHI_PARRY2));
@@ -86,6 +96,7 @@ public class EpicFightSkillCompat {
     public static void onIconCreate(WeaponCategoryIconRegisterEvent icon){
         icon.registerCategory(WOMPWeaponCategories.EVIL_TACHI, new ItemStack(WOMItems.EVIL_TACHI.get()));
         icon.registerCategory(WOMPWeaponCategories.HOLLOW_LONGSWORD, new ItemStack(WOMItems.HOLLOW_LONGSWORD.get()));
+        icon.registerCategory(WOMPWeaponCategories.BLACKSTAR, new ItemStack(WOMItems.BLACKSTAR.get()));
         icon.registerCategory(WOMPWeaponCategories.WOM_GREATAXE, new ItemStack(WOMItems.IRON_GREATAXE.get()));
 
     }

@@ -15,4 +15,9 @@ public class WOMPExecutionTypes {
             WOMPExecutions.EVIL_TACHI_EXECUTED,
             new Vec3(1.35, 0.0F, 0.0F), 0.0F, 128
     );
+    public static final ExecutionTypeManager.Type BLACKSTAR = new ExecutionTypeManager.Type(
+            WOMPExecutions.BLACKSTAR_EXECUTE,
+            WOMPExecutions.BLACKSTAR_EXECUTED,
+            new Vec3(2.55, 0.0F, 0.0F), 0.0F, 100
+    );
 }

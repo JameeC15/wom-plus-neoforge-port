@@ -87,9 +87,9 @@ public class WoMCompat implements ICompatModule {
                 WOMPAnimations.EVIL_ODACHI_COUNTER);
 
         guardMotions.put(WOMPWeaponCategories.BLACKSTAR, (item, player) ->
-                Animations.SPEAR_GUARD_HIT);
+                WOMPAnimations.BLACKSTAR_GUARD_HIT);
         guardBreakMotions.put(WOMPWeaponCategories.BLACKSTAR, (item, player) ->
-                Animations.BIPED_COMMON_NEUTRALIZED);
+                WOMPAnimations.BLACKSTAR_NEUTRALIZED);
         advancedGuardMotions.put(WOMPWeaponCategories.BLACKSTAR, (itemCap, playerpatch) ->
                 WOMPAnimations.BLACKSTAR_COUNTERATTACK);
 
