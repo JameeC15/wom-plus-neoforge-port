@@ -13,6 +13,6 @@ public class WOMPConditionals {
 
     public static final DeferredConditional DUAL_GREATAXES = REGISTRY.registerConditional(
             "dual_greataxes",
-            () -> ProviderConditional.createWeaponCategory(CapabilityItem.Styles.OCHS, WOMPWeaponCategories.WOM_GREATAXE, InteractionHand.OFF_HAND, true)
+            () -> ProviderConditional.createWeaponCategory(CapabilityItem.Styles.TWO_HAND, WOMPWeaponCategories.WOM_GREATAXE, InteractionHand.OFF_HAND, true)
     );
 }

@@ -109,6 +109,18 @@ public class EpicFightSkillCompat implements ICompatModule {
             if (event.getSkillBuilder() instanceof GuardSkill.Builder builder) {
 
                 builder.addGuardMotion(
+                        WOMPWeaponCategories.BLACKSTAR,
+                        (i, p) -> Animations.SPEAR_GUARD_HIT
+                ).addGuardBreakMotion(WOMPWeaponCategories.BLACKSTAR,
+                        (i, p) -> Animations.BIPED_COMMON_NEUTRALIZED);
+
+                builder.addGuardMotion(
+                        WOMPWeaponCategories.WOM_GREATAXE,
+                        (i, p) -> WOMPAnimations.GREATAXE_ONEHAND_GUARD_HIT
+                ).addGuardBreakMotion(WOMPWeaponCategories.WOM_GREATAXE,
+                        (i, p) -> Animations.GREATSWORD_GUARD_BREAK);
+
+                builder.addGuardMotion(
                         WOMPWeaponCategories.HOLLOW_LONGSWORD,
                         (i, p) -> Animations.LONGSWORD_GUARD_HIT
                 ).addGuardBreakMotion(WOMPWeaponCategories.HOLLOW_LONGSWORD,

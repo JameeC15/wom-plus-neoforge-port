@@ -42,7 +42,7 @@ public class WOMPItemCapabilitesPreset {
     public static final DeferredWeapon BLACKSTAR = REGISTRY.registerWeapon("blackstar", () ->
             WeaponCapability.builder()
                     .category(WOMPWeaponCategories.BLACKSTAR)
-                    .collider(WOMWeaponColliders.STAFF_EXTENTION)
+                    .collider(WOMPCollider.BLACKSTAR)
                     .swingSound(EpicFightSounds.WHOOSH_BIG)
                     .hitParticle(EpicFightParticles.HIT_BLUNT)
                     .hitSound(EpicFightSounds.BLUNT_HIT_HARD)
@@ -58,9 +58,9 @@ public class WOMPItemCapabilitesPreset {
                     .hitParticle(EpicFightParticles.HIT_BLADE)
                     .hitSound(EpicFightSounds.BLADE_HIT)
                     .canBePlacedOffhand(true)
-                    .addConditionals(WOMPConditionals.DUAL_GREATAXES, EpicFightProviderConditionals.DEFAULT_2H_WIELD_STYLE)
-                    .addMoveset(CapabilityItem.Styles.OCHS, WOMPMovesets.GREATAXE_OCHS)
-                    .addMoveset(CapabilityItem.Styles.TWO_HAND, WOMPMovesets.GREATAXE_2H));
+                    .addConditionals(WOMPConditionals.DUAL_GREATAXES, EpicFightProviderConditionals.DEFAULT_1H_WIELD_STYLE)
+                    .addMoveset(CapabilityItem.Styles.TWO_HAND, WOMPMovesets.GREATAXE_2H)
+                    .addMoveset(CapabilityItem.Styles.ONE_HAND, WOMPMovesets.GREATAXE_1H));
 
     public static final DeferredWeapon HOLLOW_LONGSWORD = REGISTRY.registerWeapon("hollow_longsword", () ->
             WeaponCapability.builder()

@@ -73,7 +73,7 @@ public final class WOMPMovesets
             .addInnateSkill((itemStack, playerPatch) -> WOMSkills.UNBREAKBLE.get())
     );
 
-    public static final DeferredMoveset GREATAXE_2H = REGISTRY.registerMoveset("greataxe_2h", () -> Moveset.builder()
+    public static final DeferredMoveset GREATAXE_1H = REGISTRY.registerMoveset("greataxe_1h", () -> Moveset.builder()
             .addComboAttacks(
                     WOMPAnimations.GREATAXE_ONEHAND_AUTO1,
                     WOMPAnimations.GREATAXE_ONEHAND_AUTO2,
@@ -89,7 +89,7 @@ public final class WOMPMovesets
             .addInnateSkill((itemStack, playerPatch) -> WOMPSkills.COMET.get())
     );
 
-    public static final DeferredMoveset GREATAXE_OCHS = REGISTRY.registerMoveset("greataxe_ochs", () -> Moveset.builder()
+    public static final DeferredMoveset GREATAXE_2H = REGISTRY.registerMoveset("greataxe_2h", () -> Moveset.builder()
             .addComboAttacks(
                     WOMPAnimations.GREATAXE_DUAL_REIFT_AUTO1,
                     WOMPAnimations.GREATAXE_DUAL_REIFT_AUTO2,
