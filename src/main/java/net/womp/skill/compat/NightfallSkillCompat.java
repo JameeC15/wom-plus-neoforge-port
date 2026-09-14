@@ -2,14 +2,9 @@ package net.womp.skill.compat;
 
 import com.hm.efn.gameasset.EFNSkills;
 import com.hm.efn.gameasset.animations.EFNSkillAnimations;
-import net.minecraft.world.item.ItemStack;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.IEventBus;
 import net.womp.gameassets.animation.WOMPAnimations;
 import net.womp.world.capabilities.item.WOMPWeaponCategories;
-import reascer.wom.world.item.WOMItems;
-import yesman.epicfight.api.client.event.types.registry.RegisterWeaponCategoryIconEvent;
 import yesman.epicfight.api.event.EpicFightEventHooks;
 import yesman.epicfight.api.event.types.registry.SkillBuilderModificationEvent;
 import yesman.epicfight.compat.ICompatModule;
