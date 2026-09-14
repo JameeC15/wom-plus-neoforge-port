@@ -1,18 +1,16 @@
 package net.womp.skill.weapon_innate;
 
 import com.google.common.collect.Maps;
-import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.InteractionHand;
-import net.womp.gameasset.animation.WOMPAnimations;
+import net.womp.gameassets.animation.WOMPAnimations;
 import net.womp.skill.WOMPSkills;
-import reascer.wom.world.item.WOMItems;
 import yesman.epicfight.api.animation.AnimationManager;
 import yesman.epicfight.api.animation.types.AttackAnimation;
 import yesman.epicfight.api.animation.types.DynamicAnimation;
 import yesman.epicfight.api.animation.types.EntityState;
 import yesman.epicfight.api.animation.types.StaticAnimation;
 import yesman.epicfight.api.asset.AssetAccessor;
-import yesman.epicfight.skill.SkillBuilder;
 import yesman.epicfight.skill.SkillContainer;
 import yesman.epicfight.skill.weaponinnate.WeaponInnateSkill;
 import yesman.epicfight.world.capabilities.entitypatch.player.PlayerPatch;
@@ -26,7 +24,7 @@ public class EvilPunishment extends WeaponInnateSkill {
 
     private final Map<AnimationManager.AnimationAccessor<? extends StaticAnimation>, AnimationManager.AnimationAccessor<? extends AttackAnimation>> comboAnimation = Maps.newHashMap();
 
-    public EvilPunishment(SkillBuilder<? extends WeaponInnateSkill> builder) {
+    public EvilPunishment(WeaponInnateSkill.Builder<?> builder) {
         super(builder);
     }
 
@@ -53,18 +51,10 @@ public class EvilPunishment extends WeaponInnateSkill {
 
         return super.canExecute(container);
     }
-    @Override
-    public void onInitiate(SkillContainer container) {
-        super.onInitiate(container);
-    }
-    @Override
-    public void onRemoved(SkillContainer container) {
-    }
-
 
 
     @Override
-    public void executeOnServer(SkillContainer container, FriendlyByteBuf args) {
+    public void executeOnServer(SkillContainer container, CompoundTag args) {
         AssetAccessor<? extends DynamicAnimation> animation = Objects.requireNonNull(container.getExecutor().getAnimator().getPlayerFor(null)).getAnimation();
         if (this.comboAnimation.containsKey(animation)) {
             container.getExecutor().playAnimationSynchronized(this.comboAnimation.get(animation), 0.0F);
@@ -102,9 +92,6 @@ public class EvilPunishment extends WeaponInnateSkill {
         }
 
         super.executeOnServer(container, args);
-
-
-
     }
     @Override
     public boolean checkExecuteCondition(SkillContainer container) {
@@ -112,6 +99,7 @@ public class EvilPunishment extends WeaponInnateSkill {
 
         return this.comboAnimation.containsKey(Objects.requireNonNull(container.getExecutor().getAnimator().getPlayerFor(null)).getAnimation()) && playerState.canUseSkill() && playerState.inaction();
     }
+
     @Override
     public WeaponInnateSkill registerPropertiesToAnimation() {
         this.comboAnimation.clear();

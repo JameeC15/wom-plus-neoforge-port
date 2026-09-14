@@ -22,7 +22,8 @@ public enum WOMPWeaponCategories implements WeaponCategory {
     public int universalOrdinal() {
         return this.id;
     }
-    public CapabilityItem.Builder apply(Item item) {
+
+    public CapabilityItem.Builder<?> apply(Item item) {
         return WOMPWeaponCategoryMapper.apply(item,this);
     }
 
