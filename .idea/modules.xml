@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wom-plus.iml" filepath="$PROJECT_DIR$/.idea/modules/wom-plus.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wom-plus.main.iml" filepath="$PROJECT_DIR$/.idea/modules/wom-plus.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wom-plus.test.iml" filepath="$PROJECT_DIR$/.idea/modules/wom-plus.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/womplus-template-1_21_1.main.iml" filepath="$PROJECT_DIR$/.idea/modules/womplus-template-1_21_1.main.iml" />
     </modules>
   </component>
 </project>
