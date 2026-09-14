@@ -42,7 +42,7 @@ public class WOMPItemCapabilitesPreset {
     public static final DeferredWeapon BLACKSTAR = REGISTRY.registerWeapon("blackstar", () ->
             WeaponCapability.builder()
                     .category(WOMPWeaponCategories.BLACKSTAR)
-                    .collider(WOMWeaponColliders.STAFF_EXTENTION)
+                    .collider(WOMPCollider.BLACKSTAR)
                     .swingSound(EpicFightSounds.WHOOSH_BIG)
                     .hitParticle(EpicFightParticles.HIT_BLUNT)
                     .hitSound(EpicFightSounds.BLUNT_HIT_HARD)

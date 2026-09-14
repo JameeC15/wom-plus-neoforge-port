@@ -22,7 +22,7 @@ public class BusterMixin {
         if (capabilityItem.getWeaponCollider() == WOMPCollider.EVIL_TACHI) {
             cir.setReturnValue(WOMPAnimations.EVIL_TACHI_NEW_DFB_WINDUP);
         }
-        if (capabilityItem.getWeaponCollider() == WOMWeaponColliders.STAFF_EXTENTION) {
+        if (capabilityItem.getWeaponCollider() == WOMPCollider.BLACKSTAR) {
             cir.setReturnValue(WOMPAnimations.BLACKSTAR_DFB_WINDUP);
         }
     }
@@ -33,7 +33,7 @@ public class BusterMixin {
         if(capabilityItem.getWeaponCollider() == WOMPCollider.EVIL_TACHI){
             cir.setReturnValue(WOMPAnimations.EVIL_TACHI_NEW_DFB_RELEASE);
         }
-        if (capabilityItem.getWeaponCollider() == WOMWeaponColliders.STAFF_EXTENTION) {
+        if (capabilityItem.getWeaponCollider() == WOMPCollider.BLACKSTAR) {
             cir.setReturnValue(WOMPAnimations.BLACKSTAR_DFB_RELEASE);
         }
     }
