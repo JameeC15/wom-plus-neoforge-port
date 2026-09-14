@@ -48,7 +48,7 @@ public class WOMPlus {
             ICompatModule.loadCompatModule(modEventBus, NightfallSkillCompat.class);
         }
 
-        ImpregResistance.applyEpicFightHooks(modEventBus);
+        ImpregResistance.applyEpicFightHooks();
     }
 
     public void addPackFindersEvent(AddPackFindersEvent event) {

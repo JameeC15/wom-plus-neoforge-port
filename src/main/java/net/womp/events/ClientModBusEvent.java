@@ -16,7 +16,6 @@ public class ClientModBusEvent {
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onParticleRegistry(final RegisterParticleProvidersEvent event) {
-
         event.registerSpecial(WOMPlusParticles.RandomSlashHitParticle.get(), new RandomSharpCutParticle.Provider() );
     }
 }

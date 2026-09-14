@@ -4,7 +4,6 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
-import net.neoforged.bus.api.IEventBus;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.living.LivingEquipmentChangeEvent;
@@ -49,7 +48,7 @@ public class ImpregResistance {
         }
     }
 
-    public static void applyEpicFightHooks(IEventBus bus) {
+    public static void applyEpicFightHooks() {
         EpicFightEventHooks.Entity.APPLY_STUN.registerEvent(ImpregResistance::onStun);
     }
 
@@ -70,7 +69,7 @@ public class ImpregResistance {
                 if (playerPatch != null) {
                     if (!playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND).isEmpty()
                             && !Objects.equals(playerPatch.getAdvancedHoldingItemCapability(InteractionHand.MAIN_HAND)
-                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), WOMPSkills.RAAAHHH)
+                            .getInnateSkill(playerPatch, playerPatch.getValidItemInHand(InteractionHand.MAIN_HAND)), WOMPSkills.RAAAHHH.get())
 
                     ) {
                         target.removeEffect(WOMPEffects.IMPREGNABILITY.getDelegate());
