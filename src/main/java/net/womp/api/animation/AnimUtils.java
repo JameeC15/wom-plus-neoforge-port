@@ -13,7 +13,6 @@ import java.util.List;
 
 
 public class AnimUtils {
-
     /**
      * @param stunTime          Duration stun time
      * @param levitationLevel   Amplifier
